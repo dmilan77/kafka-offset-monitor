@@ -13,7 +13,7 @@ libraryDependencies ++= Seq(
 	"net.databinder" %% "unfiltered-jetty" % "0.8.4",
 	"net.databinder" %% "unfiltered-json4s" % "0.8.4",
 	"com.quantifind" %% "sumac" % "0.3.0",
-	"org.apache.kafka" %% "kafka" % "0.9.0.1",
+	"org.apache.kafka" %% "kafka" % "1.1.0",
 	"org.reflections" % "reflections" % "0.9.11",
 	"com.twitter" %% "util-core" % "7.1.0",
 	"com.typesafe.slick" %% "slick" % "2.1.0",
