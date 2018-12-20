@@ -1,6 +1,6 @@
 name := "KafkaOffsetMonitor"
-version := "0.4.6-SNAPSHOT"
-scalaVersion := "2.11.11"
+version := "0.4.7-dmilan-SNAPSHOT"
+scalaVersion := "2.11.12"
 organization := "com.quantifind"
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-optimize", "-feature")
