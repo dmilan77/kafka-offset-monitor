@@ -45,6 +45,8 @@ class OffsetGetterArgs extends FieldArgs {
 
   var kafkaSecurityProtocol = "PLAINTEXT"
 
+  var consumerConfig = ""
+
   @Required
   var zk: String = _
 
