@@ -205,16 +205,16 @@ object KafkaOffsetGetter extends Logging {
 		if(args.consumerConfig.isEmpty) {
 			props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, args.kafkaBrokers)
 			props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, args.kafkaSecurityProtocol)
-			props.put(ConsumerConfig.GROUP_ID_CONFIG, group)
-			props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, if (autoCommitOffset) "true" else "false")
-			props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "30000")
-			props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArrayDeserializer")
-			props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArrayDeserializer")
-			props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, if (args.kafkaOffsetForceFromStart) "earliest" else "latest")
 		}
 		else{
 			props.load(new FileInputStream(args.consumerConfig))
 		}
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, group)
+		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, if (autoCommitOffset) "true" else "false")
+		props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "30000")
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArrayDeserializer")
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArrayDeserializer")
+		props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, if (args.kafkaOffsetForceFromStart) "earliest" else "latest")
 
 		new KafkaConsumer[Array[Byte], Array[Byte]](props)
 	}
@@ -226,7 +226,7 @@ object KafkaOffsetGetter extends Logging {
 
 		val props: Properties = new Properties
 
-		if(args.consumerConfig isEmpty) {
+		if(args.consumerConfig.isEmpty) {
 			props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, args.kafkaBrokers)
 			props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, args.kafkaSecurityProtocol)
 		}
