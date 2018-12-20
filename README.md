@@ -66,8 +66,8 @@ java -Djava.security.auth.login.config=conf/server-client-jaas.conf \
      --port 8081 \
      --refresh 10.seconds \
      --retain 2.days \
-     --dbName offsetapp_kafka
-
+     --dbName offsetapp_kafka \
+     --consumerConfig  consumerConfig File Location
 ```
 
 The arguments are:
@@ -76,6 +76,7 @@ The arguments are:
 - **zk** the ZooKeeper hosts
 - **kafkaBrokers** comma-separated list of Kafka broker hosts (ex. "host1:port,host2:port').  Required only when using offsetStorage "kafka".
 - **kafkaSecurityProtocol** security protocol to use when connecting to kafka brokers (default: ''PLAINTEXT'', optional: ''SASL_PLAINTEXT'')
+- **consumerConfig** kafka consumer config. Needed for SSL/TLS Kafka
 - **port** the port on which the app will be made available
 - **refresh** how often should the app refresh and store a point in the DB
 - **retain** how long should points be kept in the DB
