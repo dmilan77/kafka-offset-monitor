@@ -50,7 +50,7 @@ $ sbt clean assembly
 Running It
 ===========
 
-If you do not want to build it manually, just download the [current jar](https://github.com/Morningstar/kafka-offset-monitor/releases/latest).
+If you do not want to build it manually, just download the [current jar](https://github.com/dmilan77/kafka-offset-monitor/releases/latest).
 
 This is a small web app, you can run it locally or on a server, as long as you have access to the Kafka broker(s) and ZooKeeper nodes storing kafka data.
 
