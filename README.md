@@ -67,7 +67,7 @@ java -Djava.security.auth.login.config=conf/server-client-jaas.conf \
      --refresh 10.seconds \
      --retain 2.days \
      --dbName offsetapp_kafka \
-     --consumerConfig  consumerConfig File Location
+     --consumerConfig  consumerConfig-File
 ```
 
 The arguments are:
