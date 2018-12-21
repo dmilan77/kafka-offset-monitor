@@ -17,7 +17,7 @@ libraryDependencies ++= Seq(
 	"org.reflections" % "reflections" % "0.9.11",
 	"com.twitter" %% "util-core" % "7.1.0",
 	"com.typesafe.slick" %% "slick" % "2.1.0",
-	"org.xerial" % "sqlite-jdbc" % "3.18.0",
+	"org.xerial" % "sqlite-jdbc" % "3.25.2",
 	"com.google.code.gson" % "gson" % "2.8.2",
 	"com.google.guava" % "guava" % "20.0",
 	"javax.ws.rs" % "javax.ws.rs-api" % "2.0-m16",
