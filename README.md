@@ -150,7 +150,7 @@ java -Djava.security.auth.login.config=/<path>/kafka_client_jaas.conf \
      --refresh 10.seconds \
      --retain 2.days \
      --dbName offsetapp_kafka \
-     --consumerConfig /opt/interset/etc/jaas/kafka-config.property
+     --consumerConfig /<path-to-jaas>/kafka-config.property
 ```
 
 
