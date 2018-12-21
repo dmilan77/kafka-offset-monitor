@@ -55,19 +55,35 @@ If you do not want to build it manually, just download the [current jar](https:/
 This is a small web app, you can run it locally or on a server, as long as you have access to the Kafka broker(s) and ZooKeeper nodes storing kafka data.
 
 ```
-
+# For http 
 java -Djava.security.auth.login.config=conf/server-client-jaas.conf \
 	-cp KafkaOffsetMonitor-assembly-0.4.6-SNAPSHOT.jar \
        com.quantifind.kafka.offsetapp.OffsetGetterWeb \
      --offsetStorage kafka \
-     --kafkaBrokers kafkabroker01:6667,kafkabroker02:6667 \
-     --kafkaSecurityProtocol SASL_PLAINTEXT \
      --zk zkserver01,zkserver02 \
-     --port 8081 \
+     --port 8080 \
      --refresh 10.seconds \
      --retain 2.days \
      --dbName offsetapp_kafka \
      --consumerConfig  consumerConfig-File
+     
+# For https
+java -Djava.security.auth.login.config=conf/server-client-jaas.conf \
+	-cp KafkaOffsetMonitor-assembly-0.4.6-SNAPSHOT.jar \
+   -Djetty.ssl.keyStore=/<path-to-keystore>/localhost-keystore.jks \
+    -Djetty.ssl.keyStorePassword=trustme \
+    -Djetty.ssl.trustStore=/<path-to-trusstore>/all-truststore.jks \
+    -Djetty.ssl.trustStorePassword=trustme \ 
+       com.quantifind.kafka.offsetapp.OffsetGetterWeb \
+     --offsetStorage kafka \
+     --kafkaSecurityProtocol SASL_SSL \
+     --zk zkserver01,zkserver02 \
+     --port 8080 \
+     --refresh 10.seconds \
+     --retain 2.days \
+     --dbName offsetapp_kafka \
+     --consumerConfig  consumerConfig-File
+
 ```
 
 The arguments are:
@@ -76,6 +92,7 @@ The arguments are:
 - **zk** the ZooKeeper hosts
 - **consumerConfig** kafka consumer config. Needed for SSL/TLS Kafka
 - **port** the port on which the app will be made available
+- **protocol** `http` or `https` . Default value `http`
 - **refresh** how often should the app refresh and store a point in the DB
 - **retain** how long should points be kept in the DB
 - **dbName** where to store the history (default 'offsetapp')
