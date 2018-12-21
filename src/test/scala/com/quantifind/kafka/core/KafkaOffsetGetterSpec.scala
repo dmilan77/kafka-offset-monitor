@@ -162,7 +162,7 @@ class KafkaOffsetGetterSpec extends FlatSpec with ShouldMatchers {
     val gtp: GroupTopicPartition = messageOffsetMap._1
     val offMeta: OffsetAndMetadata = messageOffsetMap._2
     gtp.group shouldBe group
-    gtp.topicPartition shouldBe TopicAndPartition(topic, partition)
+    gtp.topicPartition shouldBe new TopicPartition(topic, partition)
     offMeta shouldBe offsetAndMetadata
   }
 }
