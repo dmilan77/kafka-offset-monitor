@@ -188,6 +188,8 @@ class KafkaOffsetGetter(zkUtilsWrapper: ZkUtilsWrapper, args: OffsetGetterArgs) 
 
 object KafkaOffsetGetter extends Logging {
 
+
+
 	val committedOffsetMap: concurrent.Map[GroupTopicPartition, OffsetAndMetadata] = concurrent.TrieMap()
 	val logEndOffsetsMap: concurrent.Map[TopicPartition, Long] = concurrent.TrieMap()
 	val kafkaOffsetStorage: KafkaOffsetStorage = new KafkaOffsetStorage();
@@ -202,13 +204,9 @@ object KafkaOffsetGetter extends Logging {
 	private def createNewKafkaConsumer(args: OffsetGetterArgs, group: String, autoCommitOffset: Boolean): KafkaConsumer[Array[Byte], Array[Byte]] = {
 
 		val props: Properties = new Properties
-		if(args.consumerConfig.isEmpty) {
-			props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, args.kafkaBrokers)
-			props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, args.kafkaSecurityProtocol)
-		}
-		else{
-			props.load(new FileInputStream(args.consumerConfig))
-		}
+
+		props.load(new FileInputStream(args.consumerConfig))
+
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, group)
 		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, if (autoCommitOffset) "true" else "false")
 		props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "30000")
@@ -226,13 +224,9 @@ object KafkaOffsetGetter extends Logging {
 
 		val props: Properties = new Properties
 
-		if(args.consumerConfig.isEmpty) {
-			props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, args.kafkaBrokers)
-			props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, args.kafkaSecurityProtocol)
-		}
-		else{
-			props.load(new FileInputStream(args.consumerConfig))
-		}
+
+		props.load(new FileInputStream(args.consumerConfig))
+
 
 		while (null == adminClient) {
 
