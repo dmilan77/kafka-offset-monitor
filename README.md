@@ -76,7 +76,7 @@ java -Djava.security.auth.login.config=conf/server-client-jaas.conf \
     -Djetty.ssl.trustStorePassword=trustme \ 
        com.quantifind.kafka.offsetapp.OffsetGetterWeb \
      --offsetStorage kafka \
-     --kafkaSecurityProtocol SASL_SSL \
+     --protocol https \
      --zk zkserver01,zkserver02 \
      --port 8080 \
      --refresh 10.seconds \
