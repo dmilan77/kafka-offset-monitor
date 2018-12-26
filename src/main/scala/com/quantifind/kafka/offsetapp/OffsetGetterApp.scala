@@ -41,8 +41,8 @@ class OffsetGetterArgs extends FieldArgs {
 
   var stormZKOffsetBase = "/stormconsumers"
 
-
-  var consumerConfig = ""
+  @Required
+  var consumerConfig: String = _
 
   @Required
   var zk: String = _
